@@ -1,9 +1,15 @@
 <h1>Student</h1>
 <h2><%= name%> </h2>
 <h2><%= role%></h2>
+<h3>Special Project Hours</h3>
+<h3><%= student.SplProjectHours %></h3>
+<h3>Farm Work Hours</h3>
+<h3><%= student.FarmWorkHours%></h3>
+<h3>Social Work Hours</h3>
+<h3><%= student.SocialWorkHours %></h3>
 
 <h2>Currently Registered Farm Activites</h2>
-<% for (let farmwork of farmworklist) { %>
+<% for (let farmwork of joinedfarmworklist) { %>
     <%= farmwork.id %>
     <%= farmwork.hours %>
     <%= farmwork.date %>
@@ -13,4 +19,16 @@
 <% } %>
 <h2>Currently Registered Social Activites</h2>
 <h2>Upcoming Farm Activites</h2>
+<% for (let farmwork of unjoinedfarmworklist) { %>
+    <%= farmwork.id %>
+    <%= farmwork.hours %>
+    <%= farmwork.date %>
+    <%= farmwork.location %>
+    <%= farmwork.status %>
+    <form action="/joinfarmwork" method="POST">
+        <input type="hidden" value="<%= farmwork.id %>" name="farmworkId">
+        <button class="btn" type="submit">Join</button>
+    </form>
+    <br>
+<% } %>
 <h2>Upcoming Social Activites</h2>

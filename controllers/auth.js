@@ -43,6 +43,8 @@ exports.postLogin = (req,res,next)=>{
           switch(role){
             case 'FarmHead': res.redirect('/farmhead');
             break;
+            case 'Nssvolunteer': res.redirect('/nssvolunteer');
+            break;
             default:
               res.redirect('/');
               break;

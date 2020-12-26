@@ -1,0 +1,24 @@
+<h1>Nss Volunteer</h1>
+<h2><%= name%></h2>
+<h2><%= role%></h2>
+<h2>Open Farm Works</h2>
+<% for (let openfarmwork of openfarmworklist) { %>
+    <%= openfarmwork.id %>
+    <%= openfarmwork.hours %>
+    <%= openfarmwork.date %>
+    <%= openfarmwork.location %>
+    <%= openfarmwork.status %>
+    <form action="/takefarmwork" method="POST">
+        <input type="hidden" value="<%= openfarmwork.id %>" name="openfarmworkId">
+        <button class="btn" type="submit">Take</button>
+    </form>
+    <br>
+<% } %>
+<h2>Taken Farm Works </h2>
+<% for (let takenfarmwork of takenfarmworklist) { %>
+    <%= takenfarmwork.id %>
+    <%= takenfarmwork.hours %>
+    <%= takenfarmwork.date %>
+    <%= takenfarmwork.location %>
+    <%= takenfarmwork.status %>
+<% } %>

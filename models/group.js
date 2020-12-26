@@ -24,6 +24,18 @@ const Splprojectgrp = sequelize.define("splprojectgrp",{
     projectName: {
         type : Sequelize.STRING,
         allowNull : true
+    },
+    Description:{
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    Feedback:{
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    Samplefeedback:{
+        type: Sequelize.STRING,
+        allowNull: true
     }
 });
 
@@ -55,6 +67,14 @@ const Farmwork = sequelize.define("farmwork",{
         allowNull: false,
         primaryKey: true
     },
+    Feedback:{
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    Proof: {
+        type : Sequelize.STRING,
+        allowNull: true
+    }
 });
 
 const Socialwork = sequelize.define("socialwork",{
@@ -64,6 +84,14 @@ const Socialwork = sequelize.define("socialwork",{
         allowNull: false,
         primaryKey: true
     },
+    Feedback:{
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    Proof: {
+        type : Sequelize.STRING,
+        allowNull: true
+    }
 });
 
 

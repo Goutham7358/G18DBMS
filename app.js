@@ -16,12 +16,15 @@ const { Group,
     Socialwork,
     Splprojectgrp
 } = require('./models/group');
+const {StudentFarmwork,
+  StudentSocialwork} = require('./models/junctiontables');
 const Admin = require('./models/admin');
 
 const authRoutes = require('./routes/auth');
 const adminRoutes = require('./routes/admin');
 const farmheadRoutes = require('./routes/farmhead');
 const studentRoutes = require('./routes/student');
+const nssvolunteerRoutes = require('./routes/nssvolunteer');
 
 const app = express();
 
@@ -75,6 +78,7 @@ app.use(authRoutes);
 app.use(adminRoutes);
 app.use(farmheadRoutes);
 app.use(studentRoutes);
+app.use(nssvolunteerRoutes);
 
 app.use('/',(req,res,next)=>{
     let user = req.user;
@@ -100,14 +104,16 @@ Socialwork.belongsTo(Activity);
 Farmhead.hasMany(Farmwork);
 Socialhead.hasMany(Socialwork);
 Splvolunteer.hasMany(Splprojectgrp);
+Nssvolunteer.hasMany(Farmwork);
+Nssvolunteer.hasMany(Socialwork);
 
 Splprojectgrp.hasMany(Student);
 
-Student.belongsToMany(Farmwork,{through: 'StudentFarmwork'});
-Farmwork.belongsToMany(Student,{through: 'StudentFarmwork'});
+Student.belongsToMany(Farmwork,{through: StudentFarmwork});
+Farmwork.belongsToMany(Student,{through: StudentFarmwork});
 
-Student.belongsToMany(Socialwork,{through: 'StudentSocialwork'});
-Socialwork.belongsToMany(Student,{through: 'StudentSocialwork'});
+Student.belongsToMany(Socialwork,{through: StudentSocialwork});
+Socialwork.belongsToMany(Student,{through: StudentSocialwork});
 
 sequelize
   //.sync({ force: true })

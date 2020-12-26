@@ -53,7 +53,20 @@ const Student =  sequelize.define('student',{
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
-    }
+    },
+    SplProjectHours:{
+        type: Sequelize.INTEGER,
+        defaultValue: 0
+    },
+    FarmWorkHours:{
+        type: Sequelize.INTEGER,
+        defaultValue: 0
+    },
+    SocialWorkHours:{
+        type: Sequelize.INTEGER,
+        defaultValue: 0
+    },
+
 });
 
 const Nssvolunteer =  sequelize.define('nssvolunteer',{

@@ -10,6 +10,7 @@ const Admin = require("../models/admin");
 
 Student.Person = Student.belongsTo(People);
 Farmhead.Person = Farmhead.belongsTo(People);
+Nssvolunteer.Person=Nssvolunteer.belongsTo(People);
 
 
 exports.getAddperson = (req,res,next)=>{
@@ -52,6 +53,21 @@ exports.postAddperson = (req,res,next)=>{
         },},
         {
             include:[Farmhead.Person]
+        }).then(result=>{
+            console.log("Created By Admin!!!!!");
+            console.log(result);
+            res.redirect('/farmhead');
+        })
+        break;
+    case 'Nssvolunteer': Nssvolunteer.create({
+        person: {
+                FirstName: firstname,
+                LastName: lastname,
+                Password: password,
+                Department: department
+        },},
+        {
+            include:[Nssvolunteer.Person]
         }).then(result=>{
             console.log("Created By Admin!!!!!");
             console.log(result);
