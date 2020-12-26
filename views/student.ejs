@@ -1,0 +1,16 @@
+<h1>Student</h1>
+<h2><%= name%> </h2>
+<h2><%= role%></h2>
+
+<h2>Currently Registered Farm Activites</h2>
+<% for (let farmwork of farmworklist) { %>
+    <%= farmwork.id %>
+    <%= farmwork.hours %>
+    <%= farmwork.date %>
+    <%= farmwork.location %>
+    <%= farmwork.status %>
+    <br>
+<% } %>
+<h2>Currently Registered Social Activites</h2>
+<h2>Upcoming Farm Activites</h2>
+<h2>Upcoming Social Activites</h2>

@@ -1,0 +1,19 @@
+<h1>Add FarmWork</h1>
+<%= name %>
+<%= farmHeadId%>
+<form action="/addfarmwork" method="POST">
+
+    <label for="status">Status</label>
+    <input type="text" name="status" id="status">
+
+    <label for="hours">Hours</label>
+    <input type="number" name="hours" id="hours">
+
+    <label for="date">Date</label>
+    <input type="date" name="date" id="date">
+  
+    <label for="location">Location</label>
+    <input type="text" name="location" id="location">
+  
+    <button class="btn" type="submit">Add Farmwork</button>
+</form>
