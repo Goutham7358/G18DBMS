@@ -30,6 +30,7 @@ exports.getStudent = async (req,res,next)=>{
             farmworkData["date"] = activity.Date;
             farmworkData["location"]=activity.Location;
             farmworkData["status"]=group.status;
+            farmworkData["feedback"]=farmwork.Feedback;
     
             return farmworkData;
         })
@@ -66,6 +67,10 @@ exports.getStudent = async (req,res,next)=>{
     const joinedFarmlist = await getjoinedFarmlist(farmworklist,student);
     const finaljoinedFarmlist = joinedFarmlist.filter((farmworkData)=>farmworkData!=null);
 
+    const approvedFarmlist = finaljoinedFarmlist.filter((farmworkData)=>farmworkData.status=="Approved");
+    const disapprovedFarmlist = finaljoinedFarmlist.filter((farmworkData)=>farmworkData.status=="Disapproved");
+    const currentlyRegisteredFarmlist = finaljoinedFarmlist.filter((farmworkData)=>((farmworkData.status!="Approved")&&(farmworkData.status!="Disapproved")));
+
 
     console.log("????????????????????????");
     console.log(farmworklist);
@@ -74,7 +79,9 @@ exports.getStudent = async (req,res,next)=>{
         name: name,
         role: role,
         unjoinedfarmworklist: finalunjoinedFarmlist,
-        joinedfarmworklist: finaljoinedFarmlist,
+        approvedFarmlist: approvedFarmlist,
+        disapprovedFarmlist: disapprovedFarmlist,
+        currentlyRegisteredFarmlist: currentlyRegisteredFarmlist,
         student: student
     })
     

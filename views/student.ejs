@@ -8,13 +8,34 @@
 <h3>Social Work Hours</h3>
 <h3><%= student.SocialWorkHours %></h3>
 
+<h2>Registered Farm Activities</h2>
 <h2>Currently Registered Farm Activites</h2>
-<% for (let farmwork of joinedfarmworklist) { %>
+<% for (let farmwork of currentlyRegisteredFarmlist) { %>
     <%= farmwork.id %>
     <%= farmwork.hours %>
     <%= farmwork.date %>
     <%= farmwork.location %>
     <%= farmwork.status %>
+    <br>
+<% } %>
+<h2>Approved Farm Activites</h2>
+<% for (let farmwork of approvedFarmlist) { %>
+    <%= farmwork.id %>
+    <%= farmwork.hours %>
+    <%= farmwork.date %>
+    <%= farmwork.location %>
+    <%= farmwork.status %>
+    <%= farmwork.feedback%>
+    <br>
+<% } %>
+<h2>Disapproved Farm Activites</h2>
+<% for (let farmwork of disapprovedFarmlist) { %>
+    <%= farmwork.id %>
+    <%= farmwork.hours %>
+    <%= farmwork.date %>
+    <%= farmwork.location %>
+    <%= farmwork.status %>
+    <%= farmwork.feedback%>
     <br>
 <% } %>
 <h2>Currently Registered Social Activites</h2>

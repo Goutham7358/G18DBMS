@@ -15,10 +15,43 @@
     <br>
 <% } %>
 <h2>Taken Farm Works </h2>
-<% for (let takenfarmwork of takenfarmworklist) { %>
-    <%= takenfarmwork.id %>
-    <%= takenfarmwork.hours %>
-    <%= takenfarmwork.date %>
-    <%= takenfarmwork.location %>
-    <%= takenfarmwork.status %>
+<h3>Status: Allocated</h3>
+<% for (let allocatedfarmwork of allocatedfarmworklist) { %>
+    <%= allocatedfarmwork.id %>
+    <%= allocatedfarmwork.hours %>
+    <%= allocatedfarmwork.date %>
+    <%= allocatedfarmwork.location %>
+    <%= allocatedfarmwork.status %>
+    <a href="/givefarmproof/<%= allocatedfarmwork.id  %>" class="btn">Give Proof</a>
+    <br>
+<% } %>
+<h3>Status: Submitted for approval</h3>
+<% for (let submitedfarmwork of submitedfarmworklist) { %>
+    <%= submitedfarmwork.id %>
+    <%= submitedfarmwork.hours %>
+    <%= submitedfarmwork.date %>
+    <%= submitedfarmwork.location %>
+    <%= submitedfarmwork.status %>
+    <a href="/givefarmproof/<%= submitedfarmwork.id  %>?edit=true" class="btn">Update Proof</a>
+    <br>
+<% } %>
+<h3>Status: Approved</h3>
+<% for (let approvedfarmwork of approvedfarmworklist) { %>
+    <%= approvedfarmwork.id %>
+    <%= approvedfarmwork.hours %>
+    <%= approvedfarmwork.date %>
+    <%= approvedfarmwork.location %>
+    <%= approvedfarmwork.status %>
+    <a href="/givefarmproof/<%= approvedfarmwork.id %>?see=true" class="btn">See Proof</a>
+    <br>
+<% } %>
+<h3>Status: Disapproved</h3>
+<% for (let disapprovedfarmwork of disapprovedfarmworklist) { %>
+    <%= disapprovedfarmwork.id %>
+    <%= disapprovedfarmwork.hours %>
+    <%= disapprovedfarmwork.date %>
+    <%= disapprovedfarmwork.location %>
+    <%= disapprovedfarmwork.status %>
+    <a href="/givefarmproof/<%= disapprovedfarmwork.id %>?edit=true&disapprove=true" class="btn">Change Proof</a>
+    <br>
 <% } %>

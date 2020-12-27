@@ -8,5 +8,10 @@ router.get('/nssvolunteer', nssVounteerController.getNssvolunteer);
 
 router.post('/takefarmwork', nssVounteerController.postTakefarmwork);
 
+router.get('/givefarmproof/:takenfarmId',nssVounteerController.getGiveproof);
+
+router.post('/farmproof',nssVounteerController.postFarmproof);
+
+
 module.exports = router;
 

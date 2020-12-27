@@ -17,3 +17,13 @@
   
     <button class="btn" type="submit">Add Farmwork</button>
 </form>
+<h2>Approve Farmworks</h2>
+<% for (let submitedfarmwork of submitedfarmworklist) { %>
+    <%= submitedfarmwork.id %>
+    <%= submitedfarmwork.hours %>
+    <%= submitedfarmwork.date %>
+    <%= submitedfarmwork.location %>
+    <%= submitedfarmwork.status %>
+    <a href="/approvefarmproof/<%= submitedfarmwork.id  %>" class="btn">Approve Farmwork</a>
+    <br>
+<% } %>

@@ -1,0 +1,32 @@
+<h1>Approve Farmwork</h1>
+<%= farmwork.id %>
+<%= farmwork.hours %>
+<%= farmwork.date %>
+<%= farmwork.status %>
+<%=  farmwork.proof %>
+<h3> Monitored by Nss Volunteer</h3>
+<%= farmwork.nssvolunteerId %>
+<%= farmwork.firstname %>
+
+<h3>Present Students</h3>
+<form action="/approvefarmproof" method="POST">
+<% for (let student of studentList) { %>
+    <%= student.id%>
+    <%= student.firstname%>
+    <%= student.lastname%>
+<% } %>
+
+<label for="feedback">Feedback</label>
+<input type="text" name="feedback" id="feedback"><br>
+
+<input type="radio" id="approve" name="approvalStatus" value="approve">
+<label for="approve">Approve</label><br>
+
+<input type="radio" id="disapprove" name="approvalStatus" value="disapprove">
+<label for="disapprove">Disapprove</label><br>
+
+    
+
+    <input type="hidden" value="<%= farmwork.id %>" name="farmworkId">
+    <button class="btn" type="submit">Submit Approval Status</button>
+</form>
