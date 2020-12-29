@@ -25,6 +25,7 @@ const adminRoutes = require('./routes/admin');
 const farmheadRoutes = require('./routes/farmhead');
 const studentRoutes = require('./routes/student');
 const nssvolunteerRoutes = require('./routes/nssvolunteer');
+const splvolunteerRoutes = require('./routes/splprojectvolunteer');
 
 const app = express();
 
@@ -79,6 +80,7 @@ app.use(adminRoutes);
 app.use(farmheadRoutes);
 app.use(studentRoutes);
 app.use(nssvolunteerRoutes);
+app.use(splvolunteerRoutes);
 
 app.use('/',(req,res,next)=>{
     let user = req.user;
@@ -107,7 +109,11 @@ Splvolunteer.hasMany(Splprojectgrp);
 Nssvolunteer.hasMany(Farmwork);
 Nssvolunteer.hasMany(Socialwork);
 
+Splvolunteer.hasMany(Student);
+
+
 Splprojectgrp.hasMany(Student);
+Student.belongsTo(Splprojectgrp);
 
 Student.belongsToMany(Farmwork,{through: StudentFarmwork});
 Farmwork.belongsToMany(Student,{through: StudentFarmwork});
@@ -116,7 +122,7 @@ Student.belongsToMany(Socialwork,{through: StudentSocialwork});
 Socialwork.belongsToMany(Student,{through: StudentSocialwork});
 
 sequelize
-  //.sync({ force: true })
+//  .sync({ force: true })
   .sync()
   .then(result => {
     return People.findByPk(1);

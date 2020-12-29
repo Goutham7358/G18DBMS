@@ -1,0 +1,31 @@
+<h1>Spl Project Volunteer </h1>
+<%= name%>
+<%= splvolunteerId %>
+<%= role %>
+
+<h2>Select Spl project grps</h2>
+<% for (let splprojectgrp of opensplprojectgrpslist) { %>
+    <%= splprojectgrp.splprojectgrpId %>
+    <%= splprojectgrp.projectname %>
+    <form action="/takesplprojectgrp" method="POST">
+        <input type="hidden" value="<%= splprojectgrp.splprojectgrpId %>" name="splprojectgrpId">
+        <button class="btn" type="submit">Take</button>
+    </form>
+    <br>
+<% } %>
+
+<h2>Approve Sample Submissions</h2>
+<% for (let splprojectgrp of takensamplegrpslist) { %>
+    <%= splprojectgrp.splprojectgrpId %>
+    <%= splprojectgrp.projectname %>
+    <a href="/approvesplprojectgrp/<%= splprojectgrp.splprojectgrpId %>?sample=true" class="btn">Approve Sample </a>
+    <br>
+<% } %>
+
+<h2>Approve Full Submissions</h2>
+<% for (let splprojectgrp of takenfullgrpslist) { %>
+    <%= splprojectgrp.splprojectgrpId %>
+    <%= splprojectgrp.projectname %>
+    <a href="/approvesplprojectgrp/<%= splprojectgrp.splprojectgrpId %>" class="btn">Approve Full </a>
+    <br>
+<% } %>

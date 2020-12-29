@@ -188,7 +188,7 @@ exports.postApprovefarmproof = async (req,res,next)=>{
     const finalpresentStudents = presentStudents.filter((student)=>student!=null);
 
     await giveAttendence(finalpresentStudents,activity.Hours);
-    await activity.update({Feedback: feedback});
+    await farmwork.update({Feedback: feedback});
     await group.update({status: "Approved" });
 
     res.redirect('/farmhead');

@@ -11,6 +11,7 @@ const Admin = require("../models/admin");
 Student.Person = Student.belongsTo(People);
 Farmhead.Person = Farmhead.belongsTo(People);
 Nssvolunteer.Person=Nssvolunteer.belongsTo(People);
+Splvolunteer.Person = Splvolunteer.belongsTo(People);
 
 
 exports.getAddperson = (req,res,next)=>{
@@ -41,7 +42,7 @@ exports.postAddperson = (req,res,next)=>{
         ).then(result=>{
             console.log("Created By Admin!!!!!");
             console.log(result);
-            res.redirect('/person');
+            res.redirect('/addperson');
         })
         break;
     case 'Farmhead': Farmhead.create({
@@ -56,7 +57,7 @@ exports.postAddperson = (req,res,next)=>{
         }).then(result=>{
             console.log("Created By Admin!!!!!");
             console.log(result);
-            res.redirect('/farmhead');
+            res.redirect('/addperson');
         })
         break;
     case 'Nssvolunteer': Nssvolunteer.create({
@@ -71,7 +72,22 @@ exports.postAddperson = (req,res,next)=>{
         }).then(result=>{
             console.log("Created By Admin!!!!!");
             console.log(result);
-            res.redirect('/farmhead');
+            res.redirect('/addperson');
+        })
+        break;
+    case 'Splvolunteer': Splvolunteer.create({
+        person: {
+                FirstName: firstname,
+                LastName: lastname,
+                Password: password,
+                Department: department
+        },},
+        {
+            include:[Splvolunteer.Person]
+        }).then(result=>{
+            console.log("Created By Admin!!!!!");
+            console.log(result);
+            res.redirect('/addperson');
         })
         break;
     case 'Admin': Admin.create({

@@ -1,0 +1,129 @@
+<h2><%= studentId %></h2>
+<h2><%= name %></h2>
+<h2><%= role %></h2>
+
+
+    <h2>Status of spl project</h2>
+    <% if(createdStatus) { %>
+        <h2> createdStatus </h2>
+        <%=  splprojectdata.projectname  %>
+        <% for (let member of splgrpmemberlist) { %>
+            <%= member.studentId%>
+            <%= member.firstname %>
+        <% } %>
+        <form action="/createsplgrp?createdStatus=true" method="POST">
+            <label for="sampledescription">sampledescription</label>
+            <input type="text" name="sampledescription" id="sampledescription">
+            <input type="hidden" value="<%= studentId %>" name="studentId">
+            <button class="btn" type="submit">Add Sample Description</button>
+        </form>
+
+    <% } else if(submittedSampleStatus) { %>
+        <h2>submittedSampleStatus</h2>
+        <%=  splprojectdata.projectname  %>
+        <% for (let member of splgrpmemberlist) { %>
+            <%= member.studentId%>
+            <%= member.firstname %>
+        <% } %>
+       
+        <form action="/createsplgrp?submittedSampleStatus=true" method="POST">
+            <label for="sampledescription">sampledescription</label>
+            <input type="text" name="sampledescription" id="sampledescription" value="<%=splprojectdata.sampledescription %>">
+            <input type="hidden" value="<%= studentId %>" name="studentId">
+            <button class="btn" type="submit">Update Sample Description</button>
+        </form>
+        
+    <% } else if(sampleRejected) { %>
+        <h2> sampleRejected </h2>
+        <%=  splprojectdata.projectname  %>
+        <% for (let member of splgrpmemberlist) { %>
+            <%= member.studentId%>
+            <%= member.firstname %>
+        <% } %>
+        <%= splprojectdata.samplefeedback %>
+
+        <form action="/createsplgrp?sampleRejected=true" method="POST">
+            <label for="sampledescription">sampledescription</label>
+            <input type="text" name="sampledescription" id="sampledescription" value="<%=splprojectdata.sampledescription %>">
+            <input type="hidden" value="<%= studentId %>" name="studentId">
+            <button class="btn" type="submit">Update Sample Description</button>
+        </form>
+        
+    <% } else if(sampleAccepted) { %>
+        <h2> sampleAccepted </h2>
+        <%=  splprojectdata.projectname  %>
+        <% for (let member of splgrpmemberlist) { %>
+            <%= member.studentId%>
+            <%= member.firstname %>
+        <% } %>
+        <%=splprojectdata.sampledescription %>
+        <%= splprojectdata.samplefeedback %>
+        <form action="/createsplgrp?sampleAccepted=true" method="POST">
+            <label for="fulldescription">fulldescription</label>
+            <input type="text" name="fulldescription" id="fulldescription">
+            <input type="hidden" value="<%= studentId %>" name="studentId">
+            <button class="btn" type="submit">Give Full Description</button>
+        </form>
+    <% } else if(submittedFullStatus) { %>
+        <h2>submittedFullStatus</h2> 
+        <%=  splprojectdata.projectname  %>
+        <% for (let member of splgrpmemberlist) { %>
+            <%= member.studentId%>
+            <%= member.firstname %>
+        <% } %>
+        <%=splprojectdata.sampledescription %>
+        <%= splprojectdata.samplefeedback %>
+        <form action="/createsplgrp?submittedFullStatus=true" method="POST">
+            <label for="fulldescription">fulldescription</label>
+            <input type="text" name="fulldescription" id="fulldescription" value="<%=splprojectdata.fulldescription %>">
+            <input type="hidden" value="<%= studentId %>" name="studentId">
+            <button class="btn" type="submit">Update Full Description</button>
+        </form>
+    <% } else if(fullRejected) { %>
+        <h2>fullRejected</h2>
+        <%=  splprojectdata.projectname  %>
+        <% for (let member of splgrpmemberlist) { %>
+            <%= member.studentId%>
+            <%= member.firstname %>
+        <% } %>
+        <%=splprojectdata.sampledescription %>
+        <%= splprojectdata.samplefeedback %>
+        <%= splprojectdata.feedback %>
+        <form action="/createsplgrp?fullRejected=true" method="POST">
+            <label for="fulldescription">fulldescription</label>
+            <input type="text" name="fulldescription" id="fulldescription" value="<%=splprojectdata.fulldescription %>">
+            <input type="hidden" value="<%= studentId %>" name="studentId">
+            <button class="btn" type="submit">Update Full Description</button>
+        </form>
+    <% } else if(approved) { %>
+        <h2>approved</h2> 
+        <%=  splprojectdata.projectname  %>
+        <% for (let member of splgrpmemberlist) { %>
+            <%= member.studentId%>
+            <%= member.firstname %>
+        <% } %>
+        <%= splprojectdata.sampledescription%>
+        <%= splprojectdata.samplefeedback %>
+        <%= splprojectdata.fulldescription%>
+        <%=  splprojectdata.feedback %>
+    <% } else { %>
+        <h1>Create Spl Grp</h1>
+        <form action="/createsplgrp" method="POST"> 
+        <label for="projectName">ProjectName</label>
+        <input type="text" name="projectName" id="projectName">
+
+        <label for="student1">Student1</label>
+        <input type="number" name="student1" id="student1"><br>
+
+        <label for="student2">Student2</label>
+        <input type="number" name="student2" id="student2"><br>
+
+        <label for="student3">Student3</label>
+        <input type="number" name="student3" id="student3"><br>
+
+        <input type="hidden" value="<%= studentId %>" name="studentId">
+        <button class="btn" type="submit">Create Spl Group</button>
+    </form>
+<% } %>
+
+

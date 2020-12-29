@@ -4,6 +4,10 @@
 <%= farmwork.date %>
 <%= farmwork.status %>
 
+<% if(seemode||disapprovemode) { %>
+    <%= farmwork.feedback%>
+<%}%>
+
 <h3>Attendence</h3>
 <h3>Students Registered</h3>
 <%= studentList%>

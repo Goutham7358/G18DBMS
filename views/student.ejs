@@ -53,3 +53,44 @@
     <br>
 <% } %>
 <h2>Upcoming Social Activites</h2>
+<h2>Spl Project Group</h2>
+<% if(!hasSplGrp) { %>
+    <a href="/createsplgrp %>" class="btn">Create New Grp</a>
+<% } else { %>
+    <%= splprojectgrpData.splgrpId %>
+    <%= splprojectgrpData.projectname %>
+    <%= splprojectgrpData.status %>
+    <% for (let member of  splgrpmemberlist) { %>
+        <%= member.studentId %>
+        <%= member.firstname %>
+    <% } %>
+    <h2>Status of spl project</h2>
+    <% if(createdStatus) { %>
+        <h2> createdStatus </h2>
+        <a href="/createsplgrp?createdStatus=true" class="btn">Give Sample Proof</a>
+    <% } %>
+    <% if(submittedSampleStatus) { %>
+        <h2>submittedSampleStatus</h2>
+        <a href="/createsplgrp?submittedSampleStatus=true" class="btn">Update Sample Proof</a>
+    <% } %>
+    <% if(sampleRejected) { %>
+        <h2> sampleRejected </h2>
+        <a href="/createsplgrp?sampleRejected=true" class="btn">Update Sample Proof</a>
+    <% } %>
+    <% if(sampleAccepted) { %>
+        <h2> sampleAccepted </h2>
+        <a href="/createsplgrp?sampleAccepted=true" class="btn">Give final proof</a>
+    <% } %>
+    <% if(submittedFullStatus) { %>
+        <h2>submittedFullStatus</h2> 
+        <a href="/createsplgrp?submittedFullStatus=true" class="btn">Update Final Proof</a>
+    <% } %>
+    <% if(fullRejected) { %>
+        <h2>fullRejected</h2>
+        <a href="/createsplgrp?fullRejected=true" class="btn">Update Final Proof</a>
+    <% } %>
+    <% if(approved) { %>
+        <h2>approved</h2> 
+        <a href="/createsplgrp?approved=true" class="btn">See Final Proof</a>
+    <% } %>
+<% } %>

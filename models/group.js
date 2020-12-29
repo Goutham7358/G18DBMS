@@ -23,9 +23,13 @@ const Splprojectgrp = sequelize.define("splprojectgrp",{
     },
     projectName: {
         type : Sequelize.STRING,
-        allowNull : true
+        allowNull : false
     },
-    Description:{
+    SampleDescription:{
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    FullDescription:{
         type: Sequelize.STRING,
         allowNull: true
     },
